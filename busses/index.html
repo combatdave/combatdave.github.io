@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<head>
+</head>
+
+<body style="background:#111121; color:#aaaaaa" ng-controller="myController">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>fucking space wat <small>SHOOP SHOOP butts</small></h1>
+			</div>
+		</div>
+
+		<div class="row">
+		 	<h3>{{ busses.length }}</h3>
+		 	<ul>
+		 		<li ng-repeat="bus in busses">
+		 			{{ bus }}
+		 		</li>
+		 	</ul>
+		</div>
+
+		<div class="row">
+			<div id="map-canvas" style="height:700px; width: 100%;"></div>
+		</div>
+
+		<div class="row">
+			<p>{{jsonthing}}</p>
+			<p>{{bardabunga}}</p>
+		</div>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.js"></script>
+
+	<script src="/apps/busApp.js"></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script>
+		var map;
+		function initialize() {
+			var mapOptions = {
+				zoom: 12,
+				center: new google.maps.LatLng(64.1354800, -21.8954100)
+			};
+			map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+			angular.element($("body")).scope().StartUpdatingMap();
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+</body>	
+</html>
