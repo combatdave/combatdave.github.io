@@ -17,7 +17,30 @@
 		</div>
 
 		<div class="row">
-			<div id="map-canvas" style="height:700px; width: 100%;"></div>
+			<div class="col-md-8">
+				<div id="map-canvas" style="height:700px; width: 100%;"></div>
+			</div>
+			<div class="col-md-4" style="overflow-y: scroll; max-height:700px;">
+
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default" ng-repeat="route in routes">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{route}}" style="color:#222222;">
+									Route {{route}} <span class="badge pull-right">{{bussesByRoute[route].length}}</span>
+								</a>
+							</h4>
+						</div>
+						<div id="collapse{{route}}" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div ng-repeat="bus in bussesByRoute[route]">
+									<a ng-click="ViewBus(bus);" href="#">{{bus.routeText}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="row">
